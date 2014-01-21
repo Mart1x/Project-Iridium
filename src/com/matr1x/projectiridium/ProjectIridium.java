@@ -2,6 +2,7 @@ package com.matr1x.projectiridium;
 
 import com.matr1x.projectiridium.game.Game;
 import com.matr1x.projectiridium.graphics.Window;
+import com.matr1x.projectiridium.handlers.Input;
 import com.matr1x.projectiridium.util.Time;
 
 public class ProjectIridium {
@@ -63,6 +64,8 @@ public class ProjectIridium {
 					stop();
 				
 				Time.setDelta(frameTime);
+				
+				Input.update();
 				
 				game.input();
 				game.update();
