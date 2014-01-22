@@ -4,5 +4,6 @@ Project-Snow
 Changelog:
 	0.0.1a:
 		- Implemented OpenGL
-		- Added the window
-		- Added main game loop
+		- Added the Window
+		- Added the Main Game Loop
+		- Added the Vectors
