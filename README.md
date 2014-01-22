@@ -8,3 +8,4 @@ Changelog:
 		- Added Main Game Loop
 		- Added Vectors
 		- Added Matrices
+		- Added Quaternion
