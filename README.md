@@ -9,3 +9,5 @@ Changelog:
 		- Added Vectors
 		- Added Matrices
 		- Added Quaternion
+		- Added new input method using LWJGL Input
+		- Started Rendering mechanics

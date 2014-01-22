@@ -3,6 +3,7 @@ package com.matr1x.projectiridium;
 import com.matr1x.projectiridium.game.Game;
 import com.matr1x.projectiridium.graphics.Window;
 import com.matr1x.projectiridium.handlers.Input;
+import com.matr1x.projectiridium.util.RenderUtil;
 import com.matr1x.projectiridium.util.Time;
 
 public class ProjectIridium {
@@ -16,6 +17,7 @@ public class ProjectIridium {
 	private Game game;
 	
 	public ProjectIridium() {
+		RenderUtil.initGraphics();
 		isRunning = false;
 		game = new Game();
 	}
@@ -65,9 +67,9 @@ public class ProjectIridium {
 				
 				Time.setDelta(frameTime);
 				
+				game.input();
 				Input.update();
 				
-				game.input();
 				game.update();
 				
 				if(frameCounter >= Time.SECOND) {
@@ -95,6 +97,7 @@ public class ProjectIridium {
 	}	
 	
 	private void render() {
+		RenderUtil.clearScreen();
 		game.render();
 		Window.render();
 	}
