@@ -1,5 +1,9 @@
-Project-Snow
+Project-Iridium
 ============
+
+Authors:
+	Programming:
+		- Matr1x (Zak Strange)
 
 Changelog:
 	0.0.1a:
@@ -11,3 +15,5 @@ Changelog:
 		- Added Quaternion
 		- Added new input method using LWJGL Input
 		- Started Rendering mechanics
+		- Implemented Shaders
+		- Implemented GLSL

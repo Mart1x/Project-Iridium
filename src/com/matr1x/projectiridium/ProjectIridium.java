@@ -17,6 +17,7 @@ public class ProjectIridium {
 	private Game game;
 	
 	public ProjectIridium() {
+		System.out.println(RenderUtil.getOpenGLVersion());
 		RenderUtil.initGraphics();
 		isRunning = false;
 		game = new Game();
