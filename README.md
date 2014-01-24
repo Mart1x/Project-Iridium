@@ -18,3 +18,4 @@ Changelog:
 		- Implemented Shaders
 		- Implemented GLSL
 		- Implemented Uniforms
+		- Added Translation
