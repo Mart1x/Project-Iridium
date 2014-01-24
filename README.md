@@ -17,3 +17,4 @@ Changelog:
 		- Started Rendering mechanics
 		- Implemented Shaders
 		- Implemented GLSL
+		- Implemented Uniforms
