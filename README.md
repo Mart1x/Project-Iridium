@@ -22,3 +22,4 @@ Changelog:
 		+ Added Rotation
 		+ Added Scaling
 		+ Added All Transformations
+		+ Added Mesh Faces
