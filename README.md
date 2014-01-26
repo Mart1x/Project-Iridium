@@ -25,3 +25,4 @@ Changelog:
 		+ Added Mesh Faces
 		+ Added Mesh Loading (Obj)
 		+ Added Perspective Projection
+		+ Added Camera
