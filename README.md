@@ -26,3 +26,7 @@ Changelog:
 		+ Added Mesh Loading (Obj)
 		+ Added Perspective Projection
 		+ Added Camera
+		+ Added Mouse Movement
+		+ Added Rendering Mechanics
+		+ Added Basic Shaders
+		+ Added New Shaders

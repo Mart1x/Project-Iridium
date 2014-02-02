@@ -1,59 +1,54 @@
 package com.matr1x.projectiridium.game;
 
+import com.matr1x.projectiridium.graphics.BasicShader;
+import com.matr1x.projectiridium.graphics.Material;
 import com.matr1x.projectiridium.graphics.Shader;
+import com.matr1x.projectiridium.graphics.Vertex;
 import com.matr1x.projectiridium.graphics.Window;
 import com.matr1x.projectiridium.handlers.Camera;
 import com.matr1x.projectiridium.handlers.Mesh;
 import com.matr1x.projectiridium.handlers.ResourceLoader;
 import com.matr1x.projectiridium.handlers.Transform;
+import com.matr1x.projectiridium.util.RenderUtil;
 import com.matr1x.projectiridium.util.Time;
+import com.matr1x.projectiridium.util.Vector2f;
+import com.matr1x.projectiridium.util.Vector3f;
 
 public class Game {
 	
 	private Mesh mesh;
 	private Shader shader;
+	private Material material;
 	private Transform transform;
 	private Camera camera;
 	
 	public Game() {
-		mesh =ResourceLoader.loadMesh("box.obj"); //new Mesh();
-		shader = new Shader();
+		mesh = new Mesh();
+		material = new Material(ResourceLoader.loadTexture("test.png"), new Vector3f(0, 1, 1));
+		shader = new BasicShader();
 		camera = new Camera();
 		
-//		Vertex[] vertices = new Vertex[] {new Vertex(new Vector3f(-1, -1, 0)),
-//										  new Vertex(new Vector3f(0, 1, 0)),
-//										  new Vertex(new Vector3f(1, -1, 0)),
-//										  new Vertex(new Vector3f(0, -1, 1))};
-//		
-//		int[] indices = new int[] {0, 1, 3,
-//								   3, 1, 2,
-//								   2, 1, 0,
-//								   0, 2, 3};
-//	
-//		mesh.addVertices(vertices, indices);
+		Vertex[] vertices = new Vertex[] {new Vertex(new Vector3f(-1, -1, 0), new Vector2f(0, 0)),
+										  new Vertex(new Vector3f(0, 1, 0), new Vector2f(0.5f, 0)),
+										  new Vertex(new Vector3f(1, -1, 0), new Vector2f(1.0f, 0)),
+										  new Vertex(new Vector3f(0, -1, 1), new Vector2f(0, 0.5f))};
+		
+		int[] indices = new int[] {3, 1, 0,
+								   2, 1, 3,
+								   0, 1, 2,
+								   0, 2, 3};
+	
+		mesh.addVertices(vertices, indices);
 		
 		transform = new Transform();
 		transform.setProjection(70f, Window.getWidth(), Window.getHeight(), 0.1f, 1000);
 		transform.setCamera(camera);
 		
-		shader.addVertexShader(ResourceLoader.loadShader("basicVertex.vs"));
-		shader.addFragmentShader(ResourceLoader.loadShader("basicFragment.fs"));
-		shader.compileShader();
-		
-		shader.addUniform("transform");
 	}
 	
 	public void input() {
 		camera.input();
 		
-//		if(Input.getKeyDown(Input.KEY_UP))
-//			System.out.println("We've just pressed up!");
-//		if(Input.getKeyUp(Input.KEY_UP))
-//			System.out.println("We've just released up!");		
-//		if(Input.getMouseDown(1))
-//			System.out.println("We've just right clicked at " + Input.getMousePosition().toString());
-//		if(Input.getMouseUp(1))
-//			System.out.println("We've just released right mouse button!");
 	}
 	
 	float temp = 0.0f;
@@ -69,8 +64,9 @@ public class Game {
 	}
 	
 	public void render() {
+		RenderUtil.setClearColor(Transform.getCamera().getPos().div(2048f).abs());
 		shader.bind();
-		shader.setUniform("transform", transform.getProjectedTransformation());
+		shader.updateUniforms(transform.getTransformation(), transform.getProjectedTransformation(), material);
 		mesh.draw();
 	}
 

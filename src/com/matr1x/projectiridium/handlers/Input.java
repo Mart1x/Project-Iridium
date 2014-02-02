@@ -6,10 +6,10 @@ import org.lwjgl.input.Mouse;
 import com.matr1x.projectiridium.util.Vector2f;
 
 public class Input {
-	
+
 	public static final int NUM_KEYCODES = 256;
 	public static final int NUM_MOUSEBUTTONS = 5;
-	
+
 	//All these constants come from LWJGL's Keyboard class
 	public static final int KEY_NONE            = 0x00;
 	public static final int KEY_ESCAPE          = 0x01;
@@ -139,59 +139,59 @@ public class Input {
 	public static final int KEY_APPS            = 0xDD; /* AppMenu key */
 	public static final int KEY_POWER           = 0xDE;
 	public static final int KEY_SLEEP           = 0xDF;
-	
+
 	private static boolean[] lastKeys = new boolean[NUM_KEYCODES];
 	private static boolean[] lastMouse = new boolean[NUM_MOUSEBUTTONS];
-	
+
 	public static void update()
 	{
 		for(int i = 0; i < NUM_KEYCODES; i++)
 			lastKeys[i] = getKey(i);
-		
+
 		for(int i = 0; i < NUM_MOUSEBUTTONS; i++)
 			lastMouse[i] = getMouse(i);
 	}
-	
+
 	public static boolean getKey(int keyCode)
 	{
 		return Keyboard.isKeyDown(keyCode);
 	}
-	
+
 	public static boolean getKeyDown(int keyCode)
 	{
 		return getKey(keyCode) && !lastKeys[keyCode];
 	}
-	
+
 	public static boolean getKeyUp(int keyCode)
 	{
 		return !getKey(keyCode) && lastKeys[keyCode];
 	}
-	
+
 	public static boolean getMouse(int mouseButton)
 	{
 		return Mouse.isButtonDown(mouseButton);
 	}
-	
+
 	public static boolean getMouseDown(int mouseButton)
 	{
 		return getMouse(mouseButton) && !lastMouse[mouseButton];
 	}
-	
+
 	public static boolean getMouseUp(int mouseButton)
 	{
 		return !getMouse(mouseButton) && lastMouse[mouseButton];
 	}
-	
+
 	public static Vector2f getMousePosition()
 	{
 		return new Vector2f(Mouse.getX(), Mouse.getY());
 	}
-	
+
 	public static void setMousePosition(Vector2f pos)
 	{
 		Mouse.setCursorPosition((int)pos.getX(), (int)pos.getY());
 	}
-	
+
 	public static void setCursor(boolean enabled)
 	{
 		Mouse.setGrabbed(!enabled);
