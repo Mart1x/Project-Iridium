@@ -30,3 +30,7 @@ Changelog:
 		+ Added Rendering Mechanics
 		+ Added Basic Shaders
 		+ Added New Shaders
+		+ Added Phong Vertex
+		+ Added Phong Fragment
+		+ Added Phong Shaders
+		+ Added Ambient Lighting

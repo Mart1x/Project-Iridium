@@ -1,7 +1,7 @@
 package com.matr1x.projectiridium.game;
 
-import com.matr1x.projectiridium.graphics.BasicShader;
 import com.matr1x.projectiridium.graphics.Material;
+import com.matr1x.projectiridium.graphics.PhongShader;
 import com.matr1x.projectiridium.graphics.Shader;
 import com.matr1x.projectiridium.graphics.Vertex;
 import com.matr1x.projectiridium.graphics.Window;
@@ -24,9 +24,11 @@ public class Game {
 	
 	public Game() {
 		mesh = new Mesh();
-		material = new Material(ResourceLoader.loadTexture("test.png"), new Vector3f(0, 1, 1));
-		shader = new BasicShader();
+		material = new Material(ResourceLoader.loadTexture("test.png"), new Vector3f(1, 1, 1));
+		shader = PhongShader.getInstance();
 		camera = new Camera();
+		transform = new Transform();
+
 		
 		Vertex[] vertices = new Vertex[] {new Vertex(new Vector3f(-1, -1, 0), new Vector2f(0, 0)),
 										  new Vertex(new Vector3f(0, 1, 0), new Vector2f(0.5f, 0)),
@@ -40,9 +42,10 @@ public class Game {
 	
 		mesh.addVertices(vertices, indices);
 		
-		transform = new Transform();
 		transform.setProjection(70f, Window.getWidth(), Window.getHeight(), 0.1f, 1000);
 		transform.setCamera(camera);
+		
+		PhongShader.setAmbientLight(new Vector3f(0.1f, 0.1f, 0.1f));
 		
 	}
 	

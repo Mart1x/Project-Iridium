@@ -12,7 +12,7 @@ public class BasicShader extends Shader {
 		return instance;
 	}
 	
-	public BasicShader() {
+	private BasicShader() {
 		super();
 		
 		addVertexShader(ResourceLoader.loadShader("basicVertex.vs"));
