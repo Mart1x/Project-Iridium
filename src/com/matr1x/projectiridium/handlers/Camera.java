@@ -50,7 +50,7 @@ public class Camera {
 			move(getLeft(), movAmt);
 		if (Input.getKey(Input.KEY_D))
 			move(getRight(), movAmt);
-
+		
 		if (mouseLocked) {
 			Vector2f deltaPos = Input.getMousePosition().sub(centerPosition);
 

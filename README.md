@@ -34,3 +34,4 @@ Changelog:
 		+ Added Phong Fragment
 		+ Added Phong Shaders
 		+ Added Ambient Lighting
+		+ Added Directional Lighting
