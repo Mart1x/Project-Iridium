@@ -1,6 +1,7 @@
 package com.matr1x.projectiridium.graphics;
 
 import com.matr1x.projectiridium.handlers.ResourceLoader;
+import com.matr1x.projectiridium.handlers.Transform;
 import com.matr1x.projectiridium.util.Matrix4f;
 import com.matr1x.projectiridium.util.RenderUtil;
 import com.matr1x.projectiridium.util.Vector3f;
@@ -28,6 +29,10 @@ public class PhongShader extends Shader {
 		addUniform("baseColor");
 		addUniform("ambientLight");
 		
+		addUniform("specularIntensity");
+		addUniform("specularPower");
+		addUniform("eyePos");
+		
 		addUniform("directionalLight.base.color");
 		addUniform("directionalLight.base.intensity");
 		addUniform("directionalLight.direction");
@@ -42,8 +47,15 @@ public class PhongShader extends Shader {
 		setUniform("transformProjected", projectedMatrix);
 		setUniform("transform", worldMatrix);
 		setUniform("baseColor", material.getColor());
+		
 		setUniform("ambientLight", ambientLight);
 		setUniform("directionalLight", directionalLight);
+		
+		setUniformf("specularIntensity", material.getSpecularIntensity());
+		setUniformf("specularPower", material.getSpecularPower());
+		
+		setUniform("eyePos", Transform.getCamera().getPos());
+
 	}
 
 	public static Vector3f getAmbientLight() {

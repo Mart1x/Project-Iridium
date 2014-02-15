@@ -36,3 +36,4 @@ Changelog:
 		+ Added Ambient Lighting
 		+ Added Directional Lighting
 		+ Added ScreenShots
+		+ Added Specular Reflection
