@@ -8,11 +8,13 @@ import com.matr1x.projectiridium.graphics.Shader;
 import com.matr1x.projectiridium.graphics.Vertex;
 import com.matr1x.projectiridium.graphics.Window;
 import com.matr1x.projectiridium.handlers.Camera;
+import com.matr1x.projectiridium.handlers.Input;
 import com.matr1x.projectiridium.handlers.Mesh;
 import com.matr1x.projectiridium.handlers.ResourceLoader;
 import com.matr1x.projectiridium.handlers.Transform;
 import com.matr1x.projectiridium.util.RenderUtil;
 import com.matr1x.projectiridium.util.Time;
+import com.matr1x.projectiridium.util.Util;
 import com.matr1x.projectiridium.util.Vector2f;
 import com.matr1x.projectiridium.util.Vector3f;
 
@@ -23,7 +25,7 @@ public class Game {
 	private Material material;
 	private Transform transform;
 	private Camera camera;
-	
+		
 	public Game() {
 		mesh = new Mesh();
 		material = new Material(ResourceLoader.loadTexture("test.png"), new Vector3f(0, 1, 1));
@@ -53,6 +55,9 @@ public class Game {
 	
 	public void input() {
 		camera.input();
+		
+		if(Input.getKeyUp(Input.KEY_F3)) 
+			Util.captureScreen();
 	}
 	
 	float temp = 0.0f;
@@ -65,6 +70,7 @@ public class Game {
 		transform.setTranslation(sinTemp, 0, 5);
 		transform.setRotation(0, sinTemp * 180, 0);
 		//transform.setScale(0.7f * sinTemp, 0.7f * sinTemp, 0.7f * sinTemp);
+		
 	}
 	
 	public void render() {
